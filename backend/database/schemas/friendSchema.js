@@ -11,4 +11,4 @@ const FriendSchema = new Schema({
     }
 });
 
-module.exports = UserSchema;
+module.exports = FriendSchema;
