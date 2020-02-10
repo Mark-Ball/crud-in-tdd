@@ -1,0 +1,1 @@
+const FriendModel = require('./../database/models/friendModel');
