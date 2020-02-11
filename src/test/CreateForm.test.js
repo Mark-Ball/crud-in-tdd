@@ -21,19 +21,22 @@ describe('CreateForm tests', () => {
 
     it('when name is entered, it appears in state', () => {
         const wrapper = shallow(<createForm />);
-        const componentInstance = wrapper.Instance();
-        // put input into the name field
-        const nameInput = wrapper.find('input');
-        input.simulate('change', { target: { value: 'Mark' }});
-        // check the state field
-        expect(componentInstance.state('name')).toBe('Mark');
+        const nameInput = wrapper.find("input[type='name']");
+        nameInput.simulate('change', { target: { value: 'Mark' }});
+
+        expect(componentInstance.state('name')).toEqual('Mark');
     });
 
     it('when age is entered, it appears in state', () => {
+        const wrapper = shallow(<createForm />);
+        const ageInput = wrapper.find("input[type='age']");
+        ageInput.simulate('change', { target: { value: 30 }});
 
+        expect(wrapper.state('age')).toEqual(30);
     });
 
     it('when submit is pressed, the create function is called', () => {
-
+        const wrapper = shallow(<createForm />);
+        wrapper.find('.form-login').simulate('submit');
     });
 })
