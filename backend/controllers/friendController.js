@@ -1,7 +1,14 @@
 const FriendModel = require('./../database/models/friendModel');
 
-function create() {
-    return 1;
+function create(user) {
+    try {
+        const { name, age } = user;
+        FriendModel.create({ name, age });
+    } catch(error) {
+        return 400;
+    }
+
+    return 200;
 }
 
 module.exports = {
