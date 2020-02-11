@@ -1,7 +1,7 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import createForm from './../components/createForm';
+import CreateForm from './../components/CreateForm';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
@@ -11,16 +11,18 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe('CreateForm tests', () => {
     it('component renders', () => {
-        const wrapper = shallow(<createForm />);
+        const wrapper = shallow(<CreateForm />);
     });
 
-    it('component has input fields for name and age', () => {
-        const wrapper = shallow(<createForm />);
-        expect(wrapper.find('input')).to.have.lengthOf(2);
+    it.only('component has a form with input fields for name and age', () => {
+        const wrapper = shallow(<CreateForm />);
+        expect(wrapper.find('form').exists()).toBe(true);
+        expect(wrapper.find("input[name='name']").exists()).toBe(true);
+        expect(wrapper.find("input[name='age']").exists()).toBe(true);
     });
 
     it('when name is entered, it appears in state', () => {
-        const wrapper = shallow(<createForm />);
+        const wrapper = shallow(<CreateForm />);
         const nameInput = wrapper.find("input[type='name']");
         nameInput.simulate('change', { target: { value: 'Mark' }});
 
@@ -28,7 +30,7 @@ describe('CreateForm tests', () => {
     });
 
     it('when age is entered, it appears in state', () => {
-        const wrapper = shallow(<createForm />);
+        const wrapper = shallow(<CreateForm />);
         const ageInput = wrapper.find("input[type='age']");
         ageInput.simulate('change', { target: { value: 30 }});
 
@@ -36,7 +38,7 @@ describe('CreateForm tests', () => {
     });
 
     it('when submit is pressed, the create function is called', () => {
-        const wrapper = shallow(<createForm />);
+        const wrapper = shallow(<CreateForm />);
         wrapper.find('.form-login').simulate('submit');
     });
 })

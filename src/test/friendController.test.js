@@ -1,3 +1,4 @@
+/*
 import { create } from './../../backend/controllers/friendController';
 import FriendModel from './../../backend/database/models/friendModel';
 import dbConnect from './../../backend/database/connect';
@@ -40,3 +41,4 @@ describe('Create functionality', () => {
 });
 
 
+*/

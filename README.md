@@ -15,6 +15,18 @@ DB_HOST_TESTING=mongodb://localhost/crud-in-tdd-testing`
 
 Testing will be conducted with Jest and Enzyme.
 
+## Notes on testing
+
+### 1. Using console.log within a test does not work as expected
+
+If we use Enzyme's ```shallow``` function to create a virtual component, console.logging the output does not create the expected result, instead we must use the debug() function.
+
+```Javascript
+const wrapper = shallow(<CreateForm />);
+console.log(wrapper); // ShallowWrapper {}
+console.log(wrapper.debug()); // prints full html
+```
+
 # Steps 
 
 - create boilerplate
